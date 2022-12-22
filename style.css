@@ -1,0 +1,934 @@
+:root {
+  --darkblue: rgb(40,86,138);
+  --blue: rgb(97, 184, 194);
+  --midlightblue: #399baf;
+  --midblue: rgb(43, 116, 113);      
+  --lightblue: rgb(143,191,120);
+  --white: rgb(231, 227, 210);
+  --yellow: #e3e167;
+  --darkgray: darkslategray;
+  --dimpink: #FAA7A2;
+}
+* {
+  margin: 0; /* 必设 */
+  padding: 0; /* 必设 */
+  box-sizing: border-box; /* 必设 */
+  text-decoration: none;
+  list-style: none;
+  font-family: Arial,'仿宋', sans-serif;
+  letter-spacing: 5px; /* 字间间隔 */
+  transition: all .5s ease-in-out;
+}
+body{
+    /* 初始化 取消内外边距 */
+    margin: 0;
+    padding: 0;
+    /* 100%窗口高度 */
+    min-height: 100vh;
+	background-color: rgb(24, 198, 195); /* 所有页统一背景，各页不同背景可省略 */
+    /* 渐变背景 */
+	background-image: linear-gradient(-130deg,#FFD462,#36C8C8,#51ADC7,#529CAD,#008295,#00547A,#183055,#15284A);
+    background-size: 500%; /* 指定背景图像的大小 */
+    /* 执行动画：动画名 时长 线性的 无限次播放 */
+    animation: bgAnimation 9s linear infinite;
+}
+/* 定义动画 */
+@keyframes bgAnimation {
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  image-rendering: auto;
+  overflow-x: hidden; /* 隐藏下滚动轴 */
+  transition: all .5s linear;
+}
+/* 鼠标左键划选字体 */
+::selection {
+  color: gray;
+}
+/* 导航栏 */
+.navBar {
+  /* 渐变设置 */
+  background: 
+    /* linear：线性，gradient：倾斜、坡度 */ linear-gradient(
+    /* 45度对角 */ 138deg,
+    /* 颜色 分散占用像素 */ var(--dimpink) 100px,
+    /* 颜色 */ var(--yellow)
+  );
+  width: 22vw;
+  height: 100vh;
+  text-align: center; /* 内部内容横轴居中 */
+  position: fixed; /* 生成全局绝对定位的元素,相对于浏览器窗口进行定位 */
+  padding: 3% 0%;
+}
+/* 姓.png */
+.firstnameLogo {
+  width: 10vw;
+}
+/* 导航目录 */
+.navMenu {
+  margin-top: 7.5rem;
+}
+/* 目录项目 */
+.navItem {
+  margin-top: 6rem;
+}
+/* 目录项目字体 */
+.navItem a {
+  color: var(--darkblue);
+  font-size: 3vmin;
+  font-weight: bolder;
+  text-shadow: 2px 2px 2px var(--midblue); /* 文本阴影:水平偏离 垂直偏离 发散范围 颜色 */
+}
+.homeLogo{
+  width: 2vw;
+  margin: 0% 1rem;
+}
+/* 悬停目录项目 */
+.navItem a:hover{
+  background-image: linear-gradient(-4deg,#1d66af,#e25471); /* 字体渐变设置:角度颜色 */
+  background-clip: text; /* 字体渐变设置:裁剪文本 */
+  -webkit-background-clip: text; /* 字体渐变设置:裁剪背景 */
+  color: transparent; /* 字体渐变设置:需要文字透明 */
+  text-shadow: none;
+  padding-left: 50px;
+  letter-spacing: 20px;
+  transition: all .3s ease;
+}
+/* 谈.png */
+.talkLogo {
+  width: 5vw;
+  margin-top: 7.5rem;
+}
+/* 首页右边 */
+.sideBar{
+  width: 100vw;
+  height: 100vh;
+  /*background-size: 78.2vw 100vh; /* 背景尺寸：宽度 高度，主要作用是固定背景数值，不会随放大缩小页面改变 */
+  overflow-y: auto; /* 竖滚动轴根据内容自动出现 */
+  overflow-x: hidden; /* 横滚动轴隐藏 */
+  }	
+/* 英文名透明背景 */
+.backGroundName{
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 77vw;
+  height: 100vh;
+  right: 0; /* 背景右端与浏览器右端距离 */
+  left: 22vmax; /* 背景左端与浏览器左端距离，根据左边内容占用宽度微调 */
+}
+/* 明信片 */
+.callingCard{
+  margin: 8% 20%;
+  padding-left: 23%;
+  text-shadow: 3px 3px 2px var(--darkgray); /* 文本阴影:水平偏离 垂直偏离 发散范围 颜色 */
+}
+/* 名字 */
+.name{
+  color: var(--white);
+  font-size: 8vmin;
+  font-weight: 600;
+  letter-spacing: 30px;
+  animation: fadeInName 3.5s ease-in-out;  
+}
+/* 名字动效 */
+@keyframes fadeInName{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+/* 诗句 */
+.poem{
+	color: var(--white);
+	font-size: 4vmin;
+	margin-top: 7rem;
+}
+/* 诗句（子类） */
+.poem-animation{
+	animation: fadeInPoem 3s ease-in-out;
+}
+/* 诗句（子类）动效 */
+@keyframes fadeInPoem{
+  from{
+    transform: translateX(-20px);
+  }
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+/* 下按钮 */
+.downArrowLogo{
+  position: absolute; /* 绝对定位 */
+  height: 5vh; /* 此图不可用width，具体按实际情况设置 */	
+  margin: 60vh 48.5vmax;
+  /* 动画：名称 持续时间 时机功能 延迟 迭代总数（重复次数） 方向趋势 填充模式 */
+  /* 根据需求输入数据，或不输入亦可 */
+  animation: downArrow .75s ease-in-out 1s infinite alternate; /* alternate：轮流交替 */
+}
+/* 下按钮动效 */
+/* keyframe:关键帧 */
+@keyframes downArrow{
+  from{
+    top: 25px;
+  }
+  to{
+    top: 2px;
+  }
+}
+/* 姓名条码 */
+.nameBarCodeLogo{
+  position: absolute; /* 绝对定位 */
+  width: 11vw;
+  margin: 10rem 80vmax;
+}
+
+/* 第二页 */
+#section1{
+  width: 78.2vw;
+  height: 100vh;
+  right: 0; /* 背景右端与浏览器右端距离 */
+  left: 21.8vw; /* 背景左端与浏览器左端距离，根据左边内容占用宽度微调 */
+  position: relative; /* 相对定位。配合top、bottom、left、right偏移量实现相对所属父元素的相对定位 */
+}
+/* 头像 */
+.headPortrait{
+  width: 17.1vw;
+  margin-top: 4%;
+  margin-left: 66.3%;
+}
+/* 时间致辞 */
+.timeSpeech{
+  margin-top: -5%;
+}
+/* 從这一刻 */
+.thisMonent{
+  font-weight: 600;
+  font-size: 3vmin;
+  color: var(--white);
+  width: 11vw;
+  height: 4.5vh;
+  border-radius: 10px;
+  box-shadow: 1px 8px 15px var(--midblue); /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+  text-align: center; /* 文本左右居中 */
+  line-height: 4.5vh; /* 文本上下居中 */
+  margin-left: 31.2%;
+}
+/* 悬停 從这一刻 */
+.thisMonent:hover{
+  border-radius: 30px 10px 100px 10px;
+  box-shadow: 3px 3px 3px var(--midblue); /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+}
+/* 时间日期 */
+.timeDate{
+  line-height: 15vh; /* 文本上下居中 */
+  text-align: center; /* 文本左右居中 */
+  width: 33vw;
+  height: 28vh;
+  margin-top: 3%;
+  margin-left: 18%;
+  border-radius: 30px 30px 30px 30px;
+  box-shadow: 10px 8px 20px var(--midblue); /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+  text-shadow: 3px 4px 3px var(--midblue); /* 文本阴影:水平偏离 垂直偏离 发散范围 颜色 */
+}
+/* 悬停时间日期 */
+.timeDate:hover{
+  border-radius: 30px 10px 100px 10px;
+  box-shadow: 1px 18px 15px var(--midblue); /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+}
+/* 实时时间 */
+.time{
+  color: var(--white);
+  font-family: '楷体';
+  font-size: 9rem;
+}
+/* 悬停时间 */
+.time:hover{
+  transform: scale(1.1);
+  text-shadow: -3px -3px 3px var(--midblue); /* 文本阴影:水平偏离 垂直偏离 发散范围 颜色 */
+}
+/* 日期 */
+.dates{
+  font-size: 4vmin;
+  font-weight: 600;
+  color: var(--white);
+}
+/* 悬停日期 */
+.dates:hover{
+  transform: scale(1.1);
+  text-shadow: -3px -3px 3px var(--midblue); /* 文本阴影:水平偏离 垂直偏离 发散范围 颜色 */
+}
+/* 前进按钮 */
+.aheadBtn{
+  border: 2px solid var(--white);
+  width: 11vw;
+  height: 4.5vh;
+  border-radius: 30px;
+  line-height: 4.5vh; /* 文本垂直居中。数值与高度一致 */
+  text-align: center; /* 文本左右居中 */
+  margin-top: 3%;
+  margin-left: 31.2%;
+  /*   动画：    动画名    周期(快慢）开始结束时间速度      迭代（重复次数）方向动向 */
+  animation: breatheShadow 2500ms ease-in-out/* 加速后减速 */ infinite alternate/* 轮流候补 */ ;
+}
+/* 前进按钮动效 */
+@keyframes breatheShadow{
+  0%{
+    opacity: .6;
+    border: 1px solid var(--white);
+    box-shadow: 0 3px 5px var(--white);
+  }
+  50%{
+    opacity: 1;
+    border: 1px solid #F9F1CB;
+    box-shadow: 0 0px 16px 5px #F9F1CB;
+  }
+  100%{
+    opacity: 1;
+    border: 1px solid #C3FCF1;
+    box-shadow: 0 0px 43px 4px #C3FCF1;
+  }
+}
+/* 前进按钮字体*/
+.aheadBtn a{
+  color: var(--white);
+  font-size: 3vmin;
+  font-weight: 600;
+}
+/* 悬停前进按钮 */
+.aheadBtn:hover{
+  background: var(--white);
+  border: none;
+  /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+	box-shadow: 0 0 30px var(--yellow),
+              0 0 60px var(--yellow),
+              0 0 100px var(--yellow);
+}
+/* 悬停前进按字体 */
+.aheadBtn a:hover{
+  color: var(--darkblue);
+  font-size: 3.2vmin;
+	text-shadow: 2px 3px 3px var(--midblue);
+               /* 1px 2px 40px var(--lightblue),
+               0 1px 100px var(--yellow); */
+}
+/* 诗句1(主类) */
+.poemOne{
+  color: var(--white);
+  font-size: 4vmin;
+  text-shadow: 3px 3px 2px var(--darkgray); /* 文本阴影:水平偏离 垂直偏离 发散范围 颜色 */
+  margin-left: 65.5%;
+  margin-top: 1.5rem;
+}
+/* 诗句1（子类）动效 */
+.poemOne-animation{
+  animation: fadeInPoem 3s ease-in-out;
+}
+@keyframes fadeInPoem{
+  from{
+    transform: translateX(-20px);
+  }
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+/* 第三页 */
+#section2{
+  width: 78.2vw;
+  height: 100vh;
+  justify-content: left; /* 水平向左 */
+  align-items: center; /* 上下垂直 */
+  display: flex;
+  margin-left: 21.8vw;
+  position: relative; /* 相对定位。配合top、bottom、left、right偏移量实现相对所属父元素的相对定位 */
+}
+.barChart{
+  margin-left: 1.3vw;
+  width: 60vw;
+  height: 80vh;
+  text-align: right; /* 条形图内文本右对齐 */
+}
+/* bar1、2、3、4、5、6字体设置 */
+.bar1, .bar2, .bar3, .bar4, .bar5, .bar6 p{
+  font-size: 1.5vmin;
+  color: var(--white);
+  text-shadow: 1px 2px 3px var(--darkgray); /* 文本阴影:水平偏离 垂直偏离 发散范围 颜色 */
+  padding: 0 3rem;
+}
+.bar1{
+  box-shadow: 15px 3px 12px var(--white);  /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+  height: 4vh;
+  width:20vw;
+  border-radius: 0 30px 30px 0;
+  line-height: 4vh; /* 文本上下居中 */
+}
+/* 悬停bar1 */
+.bar1:hover{
+  transform: scaleX(1.1); /* 沿X轴伸长 */
+  background: var(--white);
+  box-shadow: -6px 8px 4px gray; /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+}
+/* 悬停bar1字体设置 */
+.bar1:hover p{
+  color: var(--darkblue);
+  text-shadow: 1px 2px 3px var(--midblue);
+}
+.bar2{
+  box-shadow: 9px 2px 12px var(--white); /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+  height: 4vh;
+  width: 35vw;
+  border-radius: 0 30px 30px 0;
+  line-height: 4vh; /* 文本上下居中 */
+  margin-top: 4rem;
+}
+/* 悬停bar2 */
+.bar2:hover{
+  transform: scaleX(1.1); /* 沿X轴伸长 */
+  background: var(--white);
+  box-shadow: -6px 8px 4px gray; /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+}
+/* 悬停bar2字体设置 */
+.bar2:hover p{
+  color: var(--darkblue);
+  text-shadow: 1px 2px 3px var(--midblue);
+}
+.bar3{
+  box-shadow: 9px 3px 12px var(--white); /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+  height: 4vh;
+  width: 45vw;
+  border-radius: 0 30px 30px 0;
+  line-height: 4vh; /* 文本上下居中 */
+  margin-top: 4rem;
+}
+/* 悬停bar3 */
+.bar3:hover{
+  transform: scale(0.95); /* 缩小 */
+  background: var(--white);
+  box-shadow: -6px 8px 4px gray; /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+}
+/* 悬停bar3字体设置 */
+.bar3:hover p{
+  color: var(--darkblue);
+  text-shadow: 1px 2px 3px var(--midblue);
+}
+.bar4{
+  box-shadow: 15px 7px 20px var(--white);  /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+  height: 4vh;
+  width: 30vw;
+  border-radius: 0 30px 30px 0;
+  line-height: 4vh; /* 文本上下居中 */
+  margin-top: 4rem;
+}
+/* 悬停bar4 */
+.bar4:hover{
+  transform: scaleX(1.1); /* 沿X轴伸长 */
+  background: var(--white);
+  box-shadow: -6px 8px 4px gray; /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+}
+/* 悬停bar4字体设置 */
+.bar4:hover p{
+  color: var(--darkblue);
+  text-shadow: 1px 2px 3px var(--midblue);
+}
+.bar5{
+  box-shadow: 16px 3px 18px var(--white);  /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+  height: 4vh;
+  width: 25vw;
+  border-radius: 0 30px 30px 0;
+  line-height: 4vh; /* 文本上下居中 */
+  margin-top: 4rem;
+}
+/* 悬停bar5 */
+.bar5:hover{
+  transform: scaleX(1.1); /* 沿X轴伸长 */
+  background: var(--white);
+  box-shadow: -6px 8px 4px gray; /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+}
+/* 悬停bar5字体设置 */
+.bar5:hover p{
+  color: var(--darkblue);
+  text-shadow: 1px 2px 3px var(--midblue);
+}
+.bar6{
+  box-shadow: 16px 7px 18px var(--white);  /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+  height: 4vh;
+  width: 15vw;
+  border-radius: 0 30px 30px 0;
+  line-height: 4vh; /* 文本上下居中 */
+  margin-top: 4rem;
+}
+/* 悬停bar6 */
+.bar6:hover{
+  transform: scaleX(1.1); /* 沿X轴伸长 */
+  background: var(--white);
+  box-shadow: -6px 8px 4px gray; /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+}
+/* 悬停bar6字体设置 */
+.bar6:hover p{
+  color: var(--darkblue);
+  text-shadow: 1px 2px 3px var(--midblue);
+}
+/* 诗句2 */
+.poemTwo{
+  font-size: 4vmin;
+  color: var(--white);
+  text-shadow: 3px 3px 2px var(--darkgray); /* 文本阴影:水平偏离 垂直偏离 发散范围 颜色 */
+  width: 34vw;
+  margin-top: -55vh;
+  margin-left: 26.5vw;
+  display: none;
+  animation: none;
+  text-align: left; /* 文本向左排列 */
+}
+/* 诗句2（子类） */
+.poemTwo-animation{
+	animation: fadeInPoemTwo 2s ease-in-out;
+}
+/* 诗句（子类）动效 */
+@keyframes fadeInPoemTwo{
+  from{
+    transform: translateX(-20px);
+  }
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+/* 更多按钮 */
+.moreBtn{
+  background: var(--white);
+  border: 2px solid var(--white);
+  width: 11vw;
+  height: 4.5vh;
+  border-radius: 30px;
+  line-height: 4.5vh; /* 文本垂直居中。数值与高度一致 */
+  text-align: center; /* 文本左右居中 */
+  /* margin-top: -10%; */
+  margin-top: 3%;
+  margin-left: 38.5%;
+  /*   动画：    动画名    周期(快慢）开始结束时间速度      迭代（重复次数）方向动向 */
+  animation: moreBreatheShadow 2500ms ease-in-out/* 加速后减速 */ infinite alternate/* 轮流候补 */ ;
+}
+/* 更多按钮动效 */
+@keyframes moreBreatheShadow{
+  0%{
+    opacity: .6;
+    border: 1px solid #F2FEDC;
+    box-shadow: 0 3px 5px #F2FEDC;
+  }
+  50%{
+    opacity: 1;
+    border: 1px solid #FBFAEE;
+    box-shadow: 0 0px 16px 5px #FBFAEE;
+  }
+  100%{
+    opacity: 1;
+    border: 1px solid #F2EAE0;
+    box-shadow: 0 0px 43px 2px #F2EAE0;
+  }
+}
+/* 更多按钮字体 */
+.moreBtn a{
+  color: var(--darkblue);
+  text-shadow: 1px 2px 3px var(--midblue);
+  font-size: 3vmin;
+  font-weight: 600;
+}
+/* 悬停更多按钮 */
+.moreBtn:hover{
+  background: none;
+  border: none;
+}
+.moreBtn:hover .poemTwo{
+  display: block;
+}
+/* 悬停更多按钮字体 */
+.moreBtn a:hover{
+  color: var(--white);
+  text-shadow: 1px 2px 3px var(--midblue);
+  font-size: 3.2vmin;
+}
+
+/* 第四页 */
+#section3{
+  width: 78.2vw;
+  height: 100vh;
+  right: 0; /* 背景右端与浏览器右端距离 */
+  left: 21.8vw; /* 背景左端与浏览器左端距离，根据左边内容占用宽度微调 */
+  position: relative; /* 相对定位。配合top、bottom、left、right偏移量实现相对所属父元素的相对定位 */
+}
+/* 海报卡片 */
+.posterCard{
+  display: flex; /* 横向浮动布局，备注卡片紧挨图后 */
+  padding: 6.5% 13vw;
+}
+/* 不甘当下图 */
+.unwilling{
+  width: 33vw;
+  border-radius: 30px 0px 0px 30px;
+  box-shadow: 20px 15px 28px dimgray; /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+}
+/* 悬停不甘当下图效果 */
+.unwilling:hover {
+  filter: hue-rotate(-20deg); /* 滤镜：色相旋转（-20deg） */
+}
+/* 备注卡片图 */
+.remark{
+  width: 13vw;
+  display: flex; /* 横向浮动布局，图片紧挨不甘当下图后 */
+  border-radius: 0px 30px 30px 0px;
+  box-shadow: 12px 20px 25px dimgray; /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+}
+/* 更多按钮1 */
+.moreBtn1{
+  border: 2px solid var(--white);
+  width: 11vw;
+  height: 4.5vh;
+  border-radius: 30px;
+  line-height: 4.5vh; /* 文本垂直居中。数值与高度一致 */
+  text-align: center; /* 文本左右居中 */
+  margin-top: -5vh;
+  margin-left: 24.4vw;
+  /*   动画：    动画名    周期(快慢）开始结束时间速度      迭代（重复次数）方向动向 */
+  animation: moreBreatheShadow 2500ms ease-in-out/* 加速后减速 */ infinite alternate/* 轮流候补 */ ;
+}
+/* 更多按钮1动效 */
+@keyframes moreBreatheShadow{
+  0%{
+      opacity: .6;
+      border: 1px solid var(--white);
+      box-shadow: 0 3px 5px var(--white);
+    }
+    50%{
+      opacity: 1;
+      border: 1px solid #C3FCF1;
+      box-shadow: 0 0px 16px 5px #C3FCF1;
+    }
+    100%{
+      opacity: 1;
+      border: 1px solid #F9F1CB;
+      box-shadow: 0 0px 43px 4px #F9F1CB;
+    }
+  }
+/* 更多按钮1字体 */
+.moreBtn1 a{
+  color: var(--white);
+  font-size: 3vmin;
+  font-weight: 600;
+}
+/* 悬停更多按钮1 */
+.moreBtn1:hover{
+  background: var(--white);
+  border: none;
+  /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+	box-shadow: 0 0 30px var(--yellow),
+              0 0 60px var(--yellow),
+              0 0 100px var(--yellow);
+}
+/* 悬停更多按钮1字体 */
+.moreBtn1 a:hover{
+  color: var(--darkblue);
+  font-size: 3.2vmin;
+	text-shadow: 2px 3px 3px var(--midblue);
+}
+
+/* 第五页 */
+#section4{
+  width: 78.2vw;
+  height: 100vh;
+  right: 0; /* 背景右端与浏览器右端距离 */
+  left: 21.8vw; /* 背景左端与浏览器左端距离，根据左边内容占用宽度微调 */
+  position: absolute; /* 相对定位。配合top、bottom、left、right偏移量实现相对所属父元素的相对定位 */
+}
+/* 卡片组 */
+.container{
+  margin: 10vh 13vw;
+  display: flex; /* 弹性布局 默认水平排列 */
+  max-width: 46vw; /* 卡片展开时尺寸 */
+  height: 54vh; /* 卡片高度尺寸 */
+  line-height: 483px;
+  overflow: hidden; /* 溢出隐藏 */
+}
+.item{
+  position: relative; /* 相对定位 */
+  width: 50px; /* 卡片缩小时尺寸 */
+  /*margin: 5px; /* 卡片之间间隔 */
+  cursor: pointer;
+  border-radius: 30px;
+  background-size: cover; /* 保持原有尺寸比例，裁切长边 */ 
+  background-position: center; /* 定位背景图像为正中间 */
+  transition: 0.5s cubic-bezier(0.05,0.61,0.41,0.95); /* 过渡效果：时长 贝塞尔曲线 */
+  overflow: hidden;
+}
+/* 卡片内阴影 */
+.shadow{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  transition: 0.5s cubic-bezier(0.05,0.61,0.41,0.95);
+  background: linear-gradient(to top,rgba(0,0,0,0.35) 65%,transparent);
+}
+/* 文本内容 */
+.content{
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+  left: 40px;
+  height: 40px;
+  transition: 0.5s cubic-bezier(0.05,0.61,0.41,0.95);
+}
+/* 卡片文本 */
+.text{
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+  color: #fff;
+  width: 100%;
+}
+/* 选中样式 */
+.active{
+  flex: 1;
+  border-radius: 30px;
+}
+/* 再更多按钮2 */
+.moreBtn2{
+  background: var(--white);
+  border: 2px solid var(--white);
+  width: 11vw;
+  height: 4.5vh;
+  border-radius: 30px;
+  line-height: 4.5vh; /* 文本垂直居中。数值与高度一致 */
+  text-align: center; /* 文本左右居中 */
+  margin-top: -3.1vh;
+  margin-left: 24.4vw;
+  /*   动画：    动画名    周期(快慢）开始结束时间速度      迭代（重复次数）方向动向 */
+  animation: moreBreatheShadow 2500ms ease-in-out/* 加速后减速 */ infinite alternate/* 轮流候补 */ ;
+}
+/* 再更多按钮字体 */
+.moreBtn2 a{
+  color: var(--darkblue);
+  text-shadow: 1px 2px 3px var(--midblue);
+  font-size: 3vmin;
+  font-weight: 600;
+}
+/* 悬停再更多按钮 */
+.moreBtn2:hover{
+  background: none;
+  border: none;
+}
+/* 悬停再更多按钮字体 */
+.moreBtn2 a:hover{
+  color: var(--white);
+  text-shadow: 1px 2px 3px var(--midblue);
+  font-size: 3.2vmin;
+}
+
+/* 第六页 */
+#section5{
+  width: 78.2vw;
+  height: 100vh;
+  right: 0; /* 背景右端与浏览器右端距离 */
+  left: 21.8vw; /* 背景左端与浏览器左端距离，根据左边内容占用宽度微调 */
+  position: relative; /* 相对定位。配合top、bottom、left、right偏移量实现相对所属父元素的相对定位 */
+}
+/* 游戏 */
+.game{
+  margin-top: 100vh;
+}
+/* 游戏版面 */
+#canvas { 
+  margin: 10vh 13vw;
+  border: 3px solid var(--white);
+  border-radius: 15px;
+}
+/* 开始游戏按钮 */
+#start {
+  width: 120px;
+  height: 40px;
+  position: absolute;
+  left: 40%;
+  top: 45%;
+  font-size: 3vmin;
+  color: var(45darkblue);
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  background: rgb(255, 255, 255, 0.4);
+  justify-content: center;
+  cursor: pointer;
+}
+/* 最后按钮 */
+.endBtn{
+  border: 2px solid var(--white);
+  width: 11vw;
+  height: 4.5vh;
+  border-radius: 30px;
+  line-height: 4.5vh; /* 文本垂直居中。数值与高度一致 */
+  text-align: center; /* 文本左右居中 */
+  margin-top: -3.1vh;
+  margin-left: 28vw;
+  /*   动画：    动画名    周期(快慢）开始结束时间速度      迭代（重复次数）方向动向 */
+  animation: endBreatheShadow 2500ms ease-in-out/* 加速后减速 */ infinite alternate/* 轮流候补 */ ;
+}
+/* 更多按钮1动效 */
+@keyframes endBreatheShadow{
+  0%{
+      opacity: .6;
+      border: 1px solid var(--white);
+      box-shadow: 0 3px 5px var(--white);
+    }
+    50%{
+      opacity: 1;
+      border: 1px solid #C3FCF1;
+      box-shadow: 0 0px 16px 5px #C3FCF1;
+    }
+    100%{
+      opacity: 1;
+      border: 1px solid #F9F1CB;
+      box-shadow: 0 0px 43px 4px #F9F1CB;
+    }
+}
+/* 更多按钮1字体 */
+.endBtn a{
+  color: var(--white);
+  font-size: 3vmin;
+  font-weight: 600;
+}
+/* 悬停更多按钮1 */
+.endBtn:hover{
+  background: var(--white);
+  border: none;
+  /* 边框阴影:水平偏离 垂直偏离 发散范围 颜色 */
+	box-shadow: 0 0 30px var(--yellow),
+              0 0 60px var(--yellow),
+              0 0 100px var(--yellow);
+}
+/* 悬停更多按钮1字体 */
+.endBtn a:hover{
+  color: var(--darkblue);
+  font-size: 3.2vmin;
+	text-shadow: 2px 3px 3px var(--midblue);
+}
+/* 第七页 */
+#section6{
+  width: 78.2vw;
+  height: 100vh;
+  right: 0; /* 背景右端与浏览器右端距离 */
+  left: 21.8vw; /* 背景左端与浏览器左端距离，根据左边内容占用宽度微调 */
+  position: relative;
+}
+/* 灯、开关 */
+label{
+  position: absolute; /* 开关滑动距离固定位置 */
+  margin: 35vh 30vw;
+  width: 95px;
+  height: 35px;
+  background: #212121;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+label input{
+  appearance: none; /* 点击勾选隐藏 */
+}
+/* 按钮 */
+label span{
+  position: absolute; /* 按钮固定位置 */
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 35px;
+  background: #333;
+  border: 3px solid #212121;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 点击按钮滑动距离 */
+label input:checked ~ span{
+  left: 45px;
+}
+/* 按钮标志 */
+label span ion-icon{
+  color: rgba(255,255,255,0.25);
+  font-size: 2rem;
+}
+/* 点击开关时标志效果 */
+label input:checked ~ span ion-icon{
+  color: rgba(255,255,255,1);
+  filter: drop-shadow(0 0 3px #fff)
+          drop-shadow(0 0 5px #fff)
+          drop-shadow(0 0 4px #fff);
+}
+/* 灭灯 */
+.bulbOff img{
+  position: absolute;
+  width: 15vw;
+  height: 11vh;
+  margin: -20vh -7vw;
+  pointer-events: none;
+}
+/* 亮灯 */
+.bulbOn img{
+	position: absolute;
+	width: 15vw;
+	height: 11vh;
+	margin: -20vh -7vw;
+	pointer-events: none;
+	display: none;
+}
+label input:checked ~ .bulbOff img{
+	display: none;
+}
+label input:checked ~ .bulbOn img{
+	display: block;
+	filter: drop-shadow(0 0 15px #fff)
+	        drop-shadow(0 0 60px rgb(247,241,223))
+	        drop-shadow(0 0 80px rgb(247,241,225));
+}
+/* 页脚 */
+.footer{
+  width: 40vw;
+  height: 0;
+  top: 90vh;
+  left: 40vw;
+  position: inherit;
+}
+.footer p{
+  font-size: 1vmin;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

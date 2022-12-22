@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/aos.css">
+    <title>Personal Website</title>
+</head>
+<body onload="getTime()" onresize="handleScreen();">
+    <!-- 导航栏 -->
+    <nav class="navBar">
+        <a href="#"><img src="./img/姓.png" alt="firstname" class="firstnameLogo"></a>
+            <!-- 导航目录 -->
+        <ul class="navMenu">
+            <!-- 目录项目 -->
+            <li class="navItem"><a href="#">主頁</a></li>
+            <li class="navItem"><a href="#section1">關於</a></li> <!-- 内部跳转：# + id -->
+            <li class="navItem"><a href="#section2">展示</a></li>
+        </ul>
+
+        <a href="#section6"><img src="./img/谈.png" alt="talk……" class="talkLogo"></a>
+    </nav>
+
+    <!-- 首页右边 -->
+    <header class="sideBar">
+		<!-- 英文名透明背景 -->
+		<img src="./img/HOANGCHIHHSIN.png" alt="background" class="backGroundName">
+		<!-- 明信片 -->
+        <div class="callingCard">
+			<!-- 名字 -->
+            <p class="name">黃志欣</p>
+			<!-- 诗句 -->
+			<!-- poem(主类) poem-animation(子类)，css设置可分开设置 -->
+            <p class="poem poem-animation">與其等風來，不如追風去……</p>
+        </div>
+        <!-- 下按钮 -->
+        <!-- 实现图片内部跳转亦都要在a标签设：# + id！ -->
+		<a href="#section1"><img src="./img/箭头.png" alt="down arrow" class="downArrowLogo"></a>
+        <!-- 姓名条码 -->
+        <img src="./img/姓名条码.png" alt="name barcode" class="nameBarCodeLogo">
+    </header>
+
+    <!-- 第二页 -->
+    <section id="section1"> <!-- 内部跳转一定要设id！ -->
+		<!-- 头像 -->
+        <img src="./img/头像(30+).png" alt="head portrait" class="headPortrait">
+        <!-- 时间致辞 -->
+        <div class="timeSpeech">
+            <p class="thisMonent">這一刻</p>
+            <!-- 实时时间 -->
+            <div class="timeDate">
+                <div id="time" class="time"></div>
+                <div id="dates" class="dates"></div>
+            </div>
+            <!-- 前进按钮 -->
+            <div class="aheadBtn">
+                <a href="#section2" >前進</a>
+            </div>   
+        </div>
+        <!-- 诗句1 -->
+		<!-- poemOne(主类) poemOne-animation(子类)，css设置可分开设置 -->
+        <div class="poemOne poemOne-animation">
+            <p class="firstPoem">別讓年齡定義人生</p>
+            <p class="secondPoem">未來還有好多可能</p>
+        </div>       
+    </section>
+
+    <!-- 第三页 -->
+    <section id="section2">
+        <!-- 条形图 -->
+        <div class="barChart">
+			<div class="bar1" data-aos="fade-right" aos-delay="5s" aos-offset="300" aos-easing="ease-in-out"><p>Responsive</p></div>
+            <div class="bar2" data-aos="fade-right" aos-delay="10.5s" data-aos-offset="90" data-aos-easing="ease-out-back"><p>HTML5</p></div>
+            <div class="bar3" data-aos="fade-right" aos-delay="13.5s" data-aos-easing="ease-out-back"><p>Office</p></div>
+			<div class="bar4" data-aos="fade-right" aos-delay="7.5s" ><p>CSS3</p></div>
+			<div class="bar5" data-aos="fade-right" aos-delay="8s" data-aos-offset="80"><p>PhotoShop</p></div>
+			<div class="bar6" data-aos="fade-right" aos-delay="6.5s" ><p>JavaScript</p></div>
+			<!-- <div class="bar7" data-aos="fade-up-left" aos-delay="4s"><p>MAYA</p></div> -->
+            <!-- 更多按钮 -->
+            <div class="moreBtn">
+                <a href="#section3" >更多</a>
+                <!-- 诗句2 -->
+                <div class="poemTwo poemTwo-animation">
+                    <p class="appearance">出場不應只有一次</p>
+                    <p class="and">還有……</p>
+                </div>
+            </div> 
+        </div>
+    </section>
+
+    <!-- 第四页 -->
+    <section id="section3">
+        <!-- 海报卡片 -->
+        <!-- 不甘当下图 -->
+        <div class="posterCard"><img src="./img/不甘当下.png" alt="unwilling" class="unwilling">
+            <!-- 备注卡片图 -->
+            <img src="./img/备注卡片.png" alt="unwilling" class="remark" data-aos="fade-right" aos-delay="3s">
+        </div>
+            
+        <!-- 更多...按钮 -->
+        <div class="moreBtn1">
+            <a href="#section4" >更多…</a>
+        </div> 
+    </section>
+
+    <!-- 第五页 -->
+    <section id="section4">
+        <!-- 卡片组 -->
+        <div class="container">
+			<!-- 人生巅峰图 -->
+            <div class="item active" style="background-image: url(./img/人生巅峰.png);">
+				<!-- 卡片下阴影 -->
+                <div class="shadow"></div>
+                <div class="content">
+					<!-- 卡片文本 -->
+                    <div class="text">
+                        <p class="tit">人生巔峰</p>
+                    </div>
+                </div>
+            </div>
+			<!-- 票币图 -->
+            <div class="item" style="background-image: url(./img/票币.png);">
+                <div class="shadow"></div>
+                <div class="content">
+                    <div class="text">
+                        <p class="tit">望拆即旺財?!</p>
+                    </div>
+                </div>
+            </div>
+			<!-- 隧道驾驶图 -->
+            <div class="item" style="background-image: url(./img/隧道驾驶.png);">
+                <div class="shadow"></div>
+                <div class="content">
+                    <div class="text">
+                        <p class="tit">隧道夜遊</p>
+                    </div>
+                </div>
+            </div>
+			<!-- 小区楼图 -->
+            <div class="item" style="background-image: url(./img/小区楼.png);">
+                <div class="shadow"></div>
+                <div class="content">
+                    <div class="text">
+                        <p class="tit">等待的真相</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!-- 再更多按钮 -->
+         <div class="moreBtn2">
+            <a href="#section5" >再更多</a>
+        </div>
+    </section>
+
+    <!-- 第六页 -->
+    <section id="section5">
+		<!-- 游戏 -->
+		<div class="game">
+			<!-- 游戏版面 -->
+			<canvas id="canvas"></canvas>
+			<!-- 开始游戏按钮 -->
+			<button id="start" onclick="start()">開始</button>
+		</div>
+		<!-- 最后按钮 -->
+		 <div class="endBtn">
+		    <a href="#section6" >最後</a>
+		</div>
+    </section>
+
+    <!-- 第七页 -->
+    <section id="section6">
+		<!-- 灯、开关 -->
+        <label>
+        <!-- 开关 -->
+            <input type="checkbox">
+            <span><ion-icon name="bulb-outline"></ion-icon></span>
+			<!-- 灭灯 -->
+            <div class="bulbOff"><img src="img/长方灯（灭没字）.png"></div>
+			<!-- 亮灯 -->
+			<div class="bulbOn"><img src="img/长方灯（亮）.png"></div>
+        </label>
+		<!-- 页脚 -->
+		<div class="footer">
+			<p>WeChat & QQ:984847656</p>
+			<p>©2020 by HoangChihHsin.All rights reserved</p>
+		</div>
+	</section>
+    
+    <!-- 引入JS文件 -->
+    <script src="./JavaScript/script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="./JavaScript/aos.js"></script>
+	<!-- 引入灯泡图标 -->
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+	<script type="text/javascript">
+        // 滚动到section2条形图动效
+        // 调用AOS.js代码
+        AOS.init();
+        // AOS.js默认动效代码
+        // AOS.init({
+	    //     offset: 120, //px，提前或延迟触发
+	    //     duration: 400, //ms，过渡时间，50-3000
+	    //     easing: ease, //时间曲线
+	    //     delay: 0, //s，延迟执行
+	    //     anchor: null, //body，指定元素触发，Element
+	    //     anchorplacement: top-bottom, //top向bottom滚动，top和bottom触发，top|center|bottom任意二个组合，分先后方向，可重复如center-center
+	    //     once: false //是否仅触发一次
+        //  })
+	</script>
+</body>
+</html>
